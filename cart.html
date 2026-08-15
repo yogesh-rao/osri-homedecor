@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Cart | OSRI</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">Free same-day delivery within Bangalore &middot; Open daily until 8:30 pm</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="assets/img/osri-logo.svg" alt="OSRI" /></a>
+    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">All Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-link active">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Your Cart</h2>
+    </div>
+    <div data-cart-root></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">All Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Address</h4>
+      <p>Nildhari Road, Electronic City Phase 1, Bangalore, Karnataka</p>
+      <p>Phone: <a href="tel:+919461044224">+91 94610 44224</a></p>
+      <p>Email: <a href="mailto:hello@osrihomedecor.com">hello@osrihomedecor.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 OSRI. All rights reserved.</div>
+</footer>
+
+<div id="cart-notification" class="cart-notification">
+  <img data-note-img src="" alt="" />
+  <div><strong data-note-name></strong><br /><small>Item added to your cart</small></div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function renderCart() {
+    const root = document.querySelector("[data-cart-root]");
+    const items = getCart();
+    if (!items.length) {
+      root.innerHTML = `<div class="empty-state"><p>Your cart is empty.</p><a href="collections.html" class="btn">Continue Shopping</a></div>`;
+      return;
+    }
+    const rows = items
+      .map((item) => {
+        const p = getProductById(item.id);
+        if (!p) return "";
+        return `
+          <tr>
+            <td>
+              <div class="cart-line-product">
+                <img src="${p.image}" alt="${p.name}" />
+                <a href="product.html?id=${p.id}">${p.name}</a>
+              </div>
+            </td>
+            <td>${formatINR(p.price)}</td>
+            <td>
+              <div class="qty-row" style="margin:0;">
+                <button type="button" onclick="updateQty('${p.id}', ${item.qty - 1}); renderCart();">-</button>
+                <span>${item.qty}</span>
+                <button type="button" onclick="updateQty('${p.id}', ${item.qty + 1}); renderCart();">+</button>
+              </div>
+            </td>
+            <td>${formatINR(p.price * item.qty)}</td>
+            <td><button class="btn btn-outline" onclick="removeFromCart('${p.id}'); renderCart();">Remove</button></td>
+          </tr>`;
+      })
+      .join("");
+
+    root.innerHTML = `
+      <table class="cart-table">
+        <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Subtotal</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div class="cart-summary">
+        <div class="total">Total: ${formatINR(cartTotal())}</div>
+        <a href="collections.html" class="btn btn-outline">Continue Shopping</a>
+        <button class="btn" style="margin-left:8px;" onclick="alert('This is a demo storefront — checkout is not connected to a payment provider yet.')">Checkout</button>
+      </div>
+    `;
+  }
+
+  renderCart();
+</script>
+</body>
+</html>

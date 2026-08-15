@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-page-title>All Products | OSRI</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">Free same-day delivery within Bangalore &middot; Open daily until 8:30 pm</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="assets/img/osri-logo.svg" alt="OSRI" /></a>
+    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html" class="active">All Products</a></li>
+        <li><a href="collections.html?cat=sofa-covers">Sofa Throws &amp; Sofa Covers</a></li>
+        <li><a href="collections.html?cat=wooden-crockery">Wooden Crockery</a></li>
+        <li><a href="collections.html?cat=kids-toy-blankets">Kids Toy Blankets</a></li>
+        <li><a href="collections.html?cat=table-placemats">Table Placemats</a></li>
+        <li><a href="collections.html?cat=cushion-covers">Cushion Covers</a></li>
+        <li><a href="collections.html?cat=rugs">Rugs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-link">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2 data-heading>All Products</h2>
+      <p>Handpicked, handcrafted pieces made with Indian craftsmanship.</p>
+    </div>
+    <div class="filter-bar" data-filter-bar></div>
+    <div class="product-grid" data-product-grid></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">All Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Our Collections</h4>
+      <ul>
+        <li><a href="collections.html?cat=sofa-covers">Sofa Throws &amp; Sofa Covers</a></li>
+        <li><a href="collections.html?cat=wooden-crockery">Wooden Crockery</a></li>
+        <li><a href="collections.html?cat=kids-toy-blankets">Kids Toy Blankets</a></li>
+        <li><a href="collections.html?cat=table-placemats">Table Placemats</a></li>
+        <li><a href="collections.html?cat=cushion-covers">Cushion Cover</a></li>
+        <li><a href="collections.html?cat=rugs">Rugs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="faq.html">OSRI FAQ's</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="return-refund-policy.html">Return and Refund Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms And Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Address</h4>
+      <p>Nildhari Road, Electronic City Phase 1, Bangalore, Karnataka</p>
+      <p>Phone: <a href="tel:+919461044224">+91 94610 44224</a><br />Phone: <a href="tel:+919413818054">+91 94138 18054</a></p>
+      <p>Email: <a href="mailto:hello@osrihomedecor.com">hello@osrihomedecor.com</a></p>
+      <div class="footer-social">
+        <a href="https://m.facebook.com/profile.php?id=100088803787973" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.instagram.com/mahana.goa/" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.youtube.com/@mahanagoa" target="_blank" rel="noopener">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 OSRI. All rights reserved.</div>
+</footer>
+
+<div id="cart-notification" class="cart-notification">
+  <img data-note-img src="" alt="" />
+  <div><strong data-note-name></strong><br /><small>Item added to your cart</small></div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function renderProductCard(p) {
+    const off = p.compareAt ? Math.round((1 - p.price / p.compareAt) * 100) : 0;
+    return `
+      <div class="product-card">
+        <a href="product.html?id=${p.id}" class="media">
+          ${off ? `<span class="badge-sale">${off}% OFF</span>` : ""}
+          <img src="${p.image}" alt="${p.name}" loading="lazy" />
+        </a>
+        <div class="info">
+          <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+          <div class="price-row">
+            <span class="price">${formatINR(p.price)}</span>
+            ${p.compareAt ? `<span class="price-compare">${formatINR(p.compareAt)}</span>` : ""}
+          </div>
+          <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+        </div>
+      </div>`;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const activeCat = params.get("cat") || "all-products";
+
+  const filterBar = document.querySelector("[data-filter-bar]");
+  filterBar.innerHTML = CATEGORIES.map(
+    (c) =>
+      `<a href="collections.html?cat=${c.slug}" class="filter-chip${c.slug === activeCat ? " active" : ""}">${c.name}</a>`
+  ).join("");
+
+  const activeCategory = CATEGORIES.find((c) => c.slug === activeCat);
+  document.querySelector("[data-heading]").textContent = activeCategory ? activeCategory.name : "All Products";
+  document.querySelector("[data-page-title]").textContent = (activeCategory ? activeCategory.name : "All Products") + " | OSRI";
+
+  const grid = document.querySelector("[data-product-grid]");
+  const items = getProductsByCategory(activeCat);
+  grid.innerHTML = items.length
+    ? items.map(renderProductCard).join("")
+    : `<p style="grid-column:1/-1;text-align:center;color:var(--color-text-muted);">No products in this collection yet.</p>`;
+</script>
+</body>
+</html>

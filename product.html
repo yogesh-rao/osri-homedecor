@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-page-title>Product | OSRI</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">Free same-day delivery within Bangalore &middot; Open daily until 8:30 pm</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="assets/img/osri-logo.svg" alt="OSRI" /></a>
+    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">All Products</a></li>
+        <li><a href="collections.html?cat=sofa-covers">Sofa Throws &amp; Sofa Covers</a></li>
+        <li><a href="collections.html?cat=wooden-crockery">Wooden Crockery</a></li>
+        <li><a href="collections.html?cat=kids-toy-blankets">Kids Toy Blankets</a></li>
+        <li><a href="collections.html?cat=table-placemats">Table Placemats</a></li>
+        <li><a href="collections.html?cat=cushion-covers">Cushion Covers</a></li>
+        <li><a href="collections.html?cat=rugs">Rugs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-link">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="product-detail" data-product-root>
+      <p>Loading...</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--color-surface);">
+  <div class="container">
+    <div class="section-heading">
+      <h2>You May Also Like</h2>
+    </div>
+    <div class="product-grid" data-related-grid></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">All Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Our Collections</h4>
+      <ul>
+        <li><a href="collections.html?cat=sofa-covers">Sofa Throws &amp; Sofa Covers</a></li>
+        <li><a href="collections.html?cat=wooden-crockery">Wooden Crockery</a></li>
+        <li><a href="collections.html?cat=kids-toy-blankets">Kids Toy Blankets</a></li>
+        <li><a href="collections.html?cat=table-placemats">Table Placemats</a></li>
+        <li><a href="collections.html?cat=cushion-covers">Cushion Cover</a></li>
+        <li><a href="collections.html?cat=rugs">Rugs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="faq.html">OSRI FAQ's</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="return-refund-policy.html">Return and Refund Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms And Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Address</h4>
+      <p>Nildhari Road, Electronic City Phase 1, Bangalore, Karnataka</p>
+      <p>Phone: <a href="tel:+919461044224">+91 94610 44224</a><br />Phone: <a href="tel:+919413818054">+91 94138 18054</a></p>
+      <p>Email: <a href="mailto:hello@osrihomedecor.com">hello@osrihomedecor.com</a></p>
+      <div class="footer-social">
+        <a href="https://m.facebook.com/profile.php?id=100088803787973" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.instagram.com/mahana.goa/" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.youtube.com/@mahanagoa" target="_blank" rel="noopener">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 OSRI. All rights reserved.</div>
+</footer>
+
+<div id="cart-notification" class="cart-notification">
+  <img data-note-img src="" alt="" />
+  <div><strong data-note-name></strong><br /><small>Item added to your cart</small></div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const product = getProductById(params.get("id"));
+  const root = document.querySelector("[data-product-root]");
+
+  if (!product) {
+    root.innerHTML = `<p>Product not found. <a href="collections.html">Browse all products</a>.</p>`;
+  } else {
+    document.querySelector("[data-page-title]").textContent = product.name + " | OSRI";
+    const off = product.compareAt ? Math.round((1 - product.price / product.compareAt) * 100) : 0;
+    root.innerHTML = `
+      <div class="media">
+        <img src="${product.image}" alt="${product.name}" />
+      </div>
+      <div>
+        <h1>${product.name}</h1>
+        <div class="price-row">
+          <span class="price">${formatINR(product.price)}</span>
+          ${product.compareAt ? `<span class="price-compare">${formatINR(product.compareAt)}</span>` : ""}
+          ${off ? `<span class="badge-sale">${off}% OFF</span>` : ""}
+        </div>
+        <div class="qty-row">
+          <button type="button" data-qty-minus>-</button>
+          <span data-qty-value>1</span>
+          <button type="button" data-qty-plus>+</button>
+        </div>
+        <button class="btn btn-block" data-add-to-cart>Add to Cart</button>
+        <p class="product-desc">${product.description}</p>
+      </div>
+    `;
+
+    let qty = 1;
+    const qtyEl = root.querySelector("[data-qty-value]");
+    root.querySelector("[data-qty-minus]").addEventListener("click", () => {
+      qty = Math.max(1, qty - 1);
+      qtyEl.textContent = qty;
+    });
+    root.querySelector("[data-qty-plus]").addEventListener("click", () => {
+      qty += 1;
+      qtyEl.textContent = qty;
+    });
+    root.querySelector("[data-add-to-cart]").addEventListener("click", () => {
+      addToCart(product.id, qty);
+    });
+
+    function renderProductCard(p) {
+      const off = p.compareAt ? Math.round((1 - p.price / p.compareAt) * 100) : 0;
+      return `
+        <div class="product-card">
+          <a href="product.html?id=${p.id}" class="media">
+            ${off ? `<span class="badge-sale">${off}% OFF</span>` : ""}
+            <img src="${p.image}" alt="${p.name}" loading="lazy" />
+          </a>
+          <div class="info">
+            <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+            <div class="price-row">
+              <span class="price">${formatINR(p.price)}</span>
+              ${p.compareAt ? `<span class="price-compare">${formatINR(p.compareAt)}</span>` : ""}
+            </div>
+            <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+          </div>
+        </div>`;
+    }
+
+    const related = getProductsByCategory(product.category)
+      .filter((p) => p.id !== product.id)
+      .slice(0, 4);
+    document.querySelector("[data-related-grid]").innerHTML = related.map(renderProductCard).join("");
+  }
+</script>
+</body>
+</html>
