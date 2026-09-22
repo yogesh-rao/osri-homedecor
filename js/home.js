@@ -4,27 +4,44 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- decorative artwork ---- */
+  /* ---- artwork: real photographs, with generated art only as a fallback ---- */
+
+  /** Nth photo of a product, or '' if that product has none. */
+  function photoOf(productId, index) {
+    const p = productId && getProduct(productId);
+    if (!p || !p.images.length) return '';
+    return p.images[Math.min(index || 0, p.images.length - 1)];
+  }
+
   const art = [
-    ['heroArt',   'bloom', 'terracotta', { w: 1600, h: 900, unit: 150, border: false }],
-    ['storyArtA', 'vine',  'olive',      { w: 900,  h: 720, unit: 120, border: false }],
-    ['storyArtB', 'jaali', 'indigo',     { w: 900,  h: 720, unit: 110, border: false }]
+    ['heroArt',   photoOf(HOME.heroFrom, 0),
+      ['bloom', 'terracotta', { w: 1600, h: 900, unit: 150, border: false }]],
+    ['storyArtA', photoOf(HOME.storyAFrom, HOME.storyAIndex),
+      ['vine', 'olive', { w: 900, h: 720, unit: 120, border: false }]],
+    ['storyArtB', photoOf(HOME.storyBFrom, 0),
+      ['jaali', 'indigo', { w: 900, h: 720, unit: 110, border: false }]]
   ];
-  art.forEach(([id, motif, palette, opts]) => {
+  art.forEach(([id, photo, fallback]) => {
     const el = document.getElementById(id);
-    if (el) el.src = patternDataURI(motif, palette, opts);
+    if (!el) return;
+    el.src = photo || patternDataURI(fallback[0], fallback[1], fallback[2]);
   });
 
   /* ---- shop by category ---- */
   const catGrid = document.getElementById('catGrid');
   if (catGrid) {
     catGrid.innerHTML = CATEGORIES.map(c => {
-      const n = productsIn(c.slug).length;
+      const items = productsIn(c.slug);
+      const n = items.length;
+      // Lead with a real photo from the category; fall back to the print art.
+      const lead = items.find(p => p.image) || items.find(p => p.images.length);
+      const src = lead
+        ? (lead.image || lead.images[0])
+        : patternDataURI(c.motif, c.palette, { w: 400, h: 400, unit: 66 });
       return `
       <a class="cat-card" href="collection.html?c=${c.slug}">
         <div class="cat-card__img">
-          <img src="${patternDataURI(c.motif, c.palette, { w: 400, h: 400, unit: 66 })}"
-               alt="${esc(c.name)}" loading="lazy">
+          <img src="${src}" alt="${esc(c.name)}" loading="lazy">
         </div>
         <h3>${esc(c.name)}</h3>
         <span>${n ? n + (n === 1 ? ' product' : ' products') : 'Coming soon'}</span>

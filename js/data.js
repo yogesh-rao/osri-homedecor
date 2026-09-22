@@ -74,6 +74,26 @@ const CONTACT = {
   subject: 'New enquiry from theosri.in'
 };
 
+/* ------------------------------------------------------------
+   HOMEPAGE ARTWORK.
+
+   Which real photograph fills the hero and the two story panels. Values
+   are product ids — the photo is pulled from that product, so there is no
+   second copy of the image to keep in sync. Anything left blank, or
+   pointing at a product without photos, falls back to the generated
+   block-print art rather than breaking the layout.
+
+   Category tiles use each category's first photographed product.
+   ------------------------------------------------------------ */
+const HOME = {
+  heroFrom:   'osri-211',   // wide bedroom shot reads well behind the headline
+  storyAFrom: 'osri-301',   // fabric close-up, next to the "how it is made" copy
+  storyBFrom: 'osri-512',   // cushions on a sofa, next to the "a room shifts" copy
+  // Use a later photo from that product rather than its first, where the
+  // first is a plain pack shot and a later one is the lifestyle image.
+  storyAIndex: 2            // the detail shot of the fitted sheet
+};
+
 /* Categories drive the menu, the homepage tiles and the collection filters.
    Delete what you do not sell, rename freely. `motif` and `palette` only
    control the placeholder artwork until real photos exist. */
