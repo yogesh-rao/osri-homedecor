@@ -143,8 +143,12 @@ const RAW = [
   // Woven stripe king sets. NOT block print, so they carry their own copy.
   // Price and 300 TC confirmed. TODO: fibre composition still unconfirmed —
   // see the note in DESC_BY_ID before claiming cotton or a mercerised finish.
-  ['osri-221', 'Sand Stripe King Bedsheet',  'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
-  ['osri-222', 'Coral Stripe King Bedsheet', 'bedsheets-king', 1899, 0, 'stripe', 'terracotta', 'premium', 1],
+  ['osri-221', 'Sand Stripe King Bedsheet',       'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
+  ['osri-222', 'Coral Stripe King Bedsheet',      'bedsheets-king', 1899, 0, 'stripe', 'terracotta', 'premium', 1],
+  ['osri-223', 'Almond Stripe King Bedsheet',     'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
+  ['osri-224', 'Sage Stripe King Bedsheet',       'bedsheets-king', 1899, 0, 'stripe', 'olive',      'premium', 1],
+  ['osri-225', 'Slate Blue Stripe King Bedsheet', 'bedsheets-king', 1899, 0, 'stripe', 'indigo',     'premium', 1],
+  ['osri-226', 'Pebble Stripe King Bedsheet',     'bedsheets-king', 1899, 0, 'stripe', 'espresso',   'premium', 1],
 
   // --- Fitted ---
   ['osri-301', 'Calico Fitted Bedsheet',        'bedsheets-fitted', 1799, 0, 'stripe',  'sand',       'new',        10],
@@ -300,10 +304,32 @@ for (let n = 611; n <= 620; n++) {
   IMAGES_BY_ID['osri-' + n] = ['assets/products/osri-' + n + '/1-main.jpg'];
 });
 
-/* Woven stripe king sets: one lifestyle shot each. */
-[221, 222].forEach(n => {
-  IMAGES_BY_ID['osri-' + n] = ['assets/products/osri-' + n + '/1-main.jpg'];
-});
+/* ------------------------------------------------------------
+   WOVEN STRIPE KING SETS (osri-221..226).
+
+   Six colourways of the same 300 TC woven stripe, so the copy is built from
+   one template rather than six near-identical blocks that could drift apart.
+   Only the colour phrase differs.
+
+   Price and 300 TC are confirmed. Fibre composition and a mercerised finish
+   are deliberately NOT claimed: the supplier notes hedged between pure cotton
+   and a cotton-poly blend, and the homepage promises "no polyester blends".
+   Once the supplier confirms, add it to STRIPE_MATERIAL below and every one
+   of the six updates at once.
+   ------------------------------------------------------------ */
+const STRIPE_COLOURS = {
+  'osri-221': 'soft sand',
+  'osri-222': 'warm coral',
+  'osri-223': 'warm almond',
+  'osri-224': 'soft sage',
+  'osri-225': 'slate blue',
+  'osri-226': 'pebble grey'
+};
+const STRIPE_MATERIAL = '300 TC woven stripe';   // add fibre once confirmed
+
+/* The loop that fills in their copy lives further down, after DESC_BY_ID,
+   FEATURES_BY_ID, SIZE_BY_ID and MATERIAL_BY_ID are all declared — `const`
+   is not hoisted, so running it here would throw before the page loads. */
 
 /* Super king block-print bedsheets: one lifestyle shot each. */
 for (let n = 211; n <= 215; n++) {
@@ -322,8 +348,6 @@ for (let n = 211; n <= 215; n++) {
 /* Per-product sizes, where they differ from the category default above.
    Anything not listed here falls back to SIZE_BY_CATEGORY. */
 const SIZE_BY_ID = {
-  'osri-221': '108 x 100 in (king), with 2 pillow covers',
-  'osri-222': '108 x 100 in (king), with 2 pillow covers',
   'osri-511': 'Set of 5 covers, fillers not included',  // TODO: confirm cover size
   'osri-512': 'Set of 5 covers, fillers not included',  // TODO: confirm cover size
   'osri-651': 'Laptop bag with two outside pockets',    // TODO: confirm laptop size it fits
@@ -334,24 +358,6 @@ const SIZE_BY_ID = {
    Everything OSRI sells is hand block printed EXCEPT the Calico fitted sheet,
    so that one gets its own honest description rather than the default. */
 const DESC_BY_ID = {
-  /* Woven stripe king sets. 300 TC and the price are confirmed. The original
-     supplier notes also mentioned mercerised cotton and allowed for a
-     cotton-poly blend, but that text was hedged throughout ("typically",
-     "can vary", "if this is from their premium line"), so fibre composition
-     and finish are still NOT claimed here. Add them once the supplier
-     confirms — "mercerised cotton" is worth stating when it is true, and is
-     false advertising when it is not. */
-  'osri-221':
-    'A 300 thread count woven stripe in soft sand on a cream ground, with two ' +
-    'matching pillow covers. Generous king proportions so it sits flat with an ' +
-    'even drop on both sides, and a close, smooth weave that presses crisp and ' +
-    'softens with every wash.',
-  'osri-222':
-    'A 300 thread count woven stripe in warm coral on a cream ground, with two ' +
-    'matching pillow covers. Generous king proportions so it sits flat with an ' +
-    'even drop on both sides, and a close, smooth weave that presses crisp and ' +
-    'softens with every wash.',
-
   'osri-301':
     'A printed pure cotton fitted sheet with elasticated corners, finished with ' +
     'an eyelet lace border and matching pillow covers. Pre-shrunk and washed soft, ' +
@@ -360,21 +366,6 @@ const DESC_BY_ID = {
 
 /* Per-product feature bullets, where the defaults do not describe the item. */
 const FEATURES_BY_ID = {
-  /* No fabric composition, thread count or finish claimed until the supplier
-     confirms it — see the note in DESC_BY_ID. */
-  'osri-221': [
-    '300 thread count',
-    'King size, 108 x 100 in',
-    'Comes with two matching pillow covers',
-    'Woven stripe, not a printed one'
-  ],
-  'osri-222': [
-    '300 thread count',
-    'King size, 108 x 100 in',
-    'Comes with two matching pillow covers',
-    'Woven stripe, not a printed one'
-  ],
-
   'osri-301': [
     'Elasticated corners for a snug fit',
     'Printed pure cotton with an eyelet lace border',
@@ -409,11 +400,23 @@ for (let n = 641; n <= 643; n++) {
 [511, 512, 651, 652].forEach(n => {
   MATERIAL_BY_ID['osri-' + n] = '100% cotton, block print';
 });
-/* The default for bedsheets is "100% cotton", which cannot be claimed for the
-   stripe sets until the supplier confirms the composition — the notes allowed
-   for a cotton-poly blend. Neutral wording until then. */
-[221, 222].forEach(n => {
-  MATERIAL_BY_ID['osri-' + n] = '300 TC woven stripe';
+/* All six stripe colourways, built from one template. Placed here because it
+   writes into every one of the maps above, so they must exist first. */
+Object.keys(STRIPE_COLOURS).forEach(id => {
+  IMAGES_BY_ID[id] = ['assets/products/' + id + '/1-main.jpg'];
+  SIZE_BY_ID[id] = '108 x 100 in (king), with 2 pillow covers';
+  MATERIAL_BY_ID[id] = STRIPE_MATERIAL;
+  DESC_BY_ID[id] =
+    'A 300 thread count woven stripe in ' + STRIPE_COLOURS[id] + ' on a cream ' +
+    'ground, with two matching pillow covers. Generous king proportions so it ' +
+    'sits flat with an even drop on both sides, and a close, smooth weave that ' +
+    'presses crisp and softens with every wash.';
+  FEATURES_BY_ID[id] = [
+    '300 thread count',
+    'King size, 108 x 100 in',
+    'Comes with two matching pillow covers',
+    'Woven stripe, not a printed one'
+  ];
 });
 
 /* Applied to every product unless overridden. Check these claims match what
