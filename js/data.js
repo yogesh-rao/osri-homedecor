@@ -98,7 +98,7 @@ const HOME = {
    Delete what you do not sell, rename freely. `motif` and `palette` only
    control the placeholder artwork until real photos exist. */
 const CATEGORIES = [
-  { slug: 'bedsheets-king',   name: 'King & Super King',  blurb: 'Generous drop for larger beds',              motif: 'jaali',   palette: 'indigo' },
+  { slug: 'bedsheets-king',   name: 'King Bedsheets',     blurb: 'Generous drop for larger beds',              motif: 'jaali',   palette: 'indigo' },
   { slug: 'bedsheets-fitted', name: 'Fitted Bedsheets',   blurb: 'Elasticated corners, no tugging at night',   motif: 'stripe',  palette: 'espresso' },
   { slug: 'cushions-linen',   name: 'Cushions & Table Linen', blurb: 'Change a room without moving furniture', motif: 'bloom',   palette: 'saffron' },
   { slug: 'bags',             name: 'Bags & Accessories', blurb: 'Printed cotton totes, laptop and travel bags', motif: 'vine',  palette: 'olive' }
@@ -130,15 +130,15 @@ const CATEGORIES = [
    ------------------------------------------------------------ */
 
 const RAW = [
-  // --- King & Super King ---
-  // Five block-print super king designs, named by their print.
+  // --- King bedsheets ---
+  // Five block-print king designs, named by their print.
   // NOTE: stock 1 per design — the tracker showed 4 units against 5 designs,
   // so confirm which of these you actually hold and how many.
-  ['osri-211', 'Olive Sprig Super King Bedsheet',      'bedsheets-king', 1199, 0, 'vine',  'olive',      'new', 1],
-  ['osri-212', 'Teal Leaf Super King Bedsheet',        'bedsheets-king', 1199, 0, 'vine',  'teal',       'new', 1],
-  ['osri-213', 'Rose Medallion Super King Bedsheet',   'bedsheets-king', 1199, 0, 'bloom', 'rose',       'new', 1],
-  ['osri-214', 'Seafoam Buti Super King Bedsheet',     'bedsheets-king', 1199, 0, 'buti',  'teal',       'new', 1],
-  ['osri-215', 'Terracotta Paisley Super King Bedsheet','bedsheets-king',1199, 0, 'bloom', 'terracotta', 'new', 1],
+  ['osri-211', 'Olive Sprig King Bedsheet',      'bedsheets-king', 1199, 0, 'vine',  'olive',      'new', 1],
+  ['osri-212', 'Teal Leaf King Bedsheet',        'bedsheets-king', 1199, 0, 'vine',  'teal',       'new', 1],
+  ['osri-213', 'Rose Medallion King Bedsheet',   'bedsheets-king', 1199, 0, 'bloom', 'rose',       'new', 1],
+  ['osri-214', 'Seafoam Buti King Bedsheet',     'bedsheets-king', 1199, 0, 'buti',  'teal',       'new', 1],
+  ['osri-215', 'Terracotta Paisley King Bedsheet','bedsheets-king',1199, 0, 'bloom', 'terracotta', 'new', 1],
 
   // Woven stripe king sets. NOT block print, so they carry their own copy.
   // Price and 300 TC confirmed. TODO: fibre composition still unconfirmed —
@@ -217,9 +217,9 @@ const SAMPLE = [
   ['s-203', 'Neem Vine Single Bedsheet',         'single-bedsheets',  899, 1349, 'vine',    'olive',      ''],
   ['s-204', 'Chevron Single Bedsheet',           'single-bedsheets',  879, 1299, 'chevron', 'indigo',     ''],
 
-  ['s-301', 'Heritage Jaali Super King Bedsheet','king-bedsheets',   1899, 2799, 'jaali',   'indigo',     'premium'],
+  ['s-301', 'Heritage Jaali King Bedsheet','king-bedsheets',   1899, 2799, 'jaali',   'indigo',     'premium'],
   ['s-302', 'Sanganeri Bloom King Bedsheet',     'king-bedsheets',   1799, 2599, 'bloom',   'terracotta', ''],
-  ['s-303', 'Bagru Buti Super King Bedsheet',    'king-bedsheets',   1949, 2899, 'buti',    'espresso',   'premium'],
+  ['s-303', 'Bagru Buti King Bedsheet',    'king-bedsheets',   1949, 2899, 'buti',    'espresso',   'premium'],
   ['s-304', 'Amber Vine King Bedsheet',          'king-bedsheets',   1749, 2499, 'vine',    'saffron',    'bestseller'],
 
   ['s-401', 'Sanganer 4-Piece Bedding Set',      'bedding-sets',     3499, 4999, 'bloom',   'terracotta', 'premium'],
@@ -331,7 +331,7 @@ const STRIPE_MATERIAL = '300 TC woven stripe';   // add fibre once confirmed
    FEATURES_BY_ID, SIZE_BY_ID and MATERIAL_BY_ID are all declared — `const`
    is not hoisted, so running it here would throw before the page loads. */
 
-/* Super king block-print bedsheets: one lifestyle shot each. */
+/* Block-print king bedsheets: one lifestyle shot each. */
 for (let n = 211; n <= 215; n++) {
   IMAGES_BY_ID['osri-' + n] = ['assets/products/osri-' + n + '/1-main.jpg'];
 }
@@ -378,11 +378,11 @@ const FEATURES_BY_ID = {
   'osri-512': ['Set of five covers', 'Block printed cotton', 'Covers only — fillers not included']
 };
 
-/* Toiletry sets, totes and the super king bedsheets each share a size and
+/* Toiletry sets, totes and the block-print king bedsheets each share a size and
    fabric description within their run. */
 const MATERIAL_BY_ID = {};
 for (let n = 211; n <= 215; n++) {
-  SIZE_BY_ID['osri-' + n] = '108 x 100 in (super king), with 2 pillow covers';
+  SIZE_BY_ID['osri-' + n] = '108 x 100 in (king), with 2 pillow covers';
   MATERIAL_BY_ID['osri-' + n] = '100% cotton, block print';
 }
 for (let n = 611; n <= 620; n++) {

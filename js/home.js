@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rails = [
     ['railBestsellers', byBadge('bestseller', 8)],
     ['railNew',         byBadge('new', 4)],
-    ['railBedding',     productsIn('bedsheets-double').slice(0, 4)],
+    ['railBedding',     productsIn('bedsheets-fitted').slice(0, 4)],
     ['railQuilts',      productsIn('bedsheets-king').slice(0, 4)],
     ['railCushions',    productsIn('cushions-linen').concat(productsIn('bags')).slice(0, 4)]
   ];
