@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-81 -32 251 251" role="img" aria-label="OSRI">
+  <title>OSRI floral mark</title>
+  <!-- Vector paths from OSRI_Floral_Icon_Master.svg. Official palette:
+       terracotta #B5522F, indigo #2F4A5E, mustard #C99447.
+       Square canvas for favicon use, artwork optically centred. -->
+  <!-- stem -->
+  <path d="M45 205 C45 165 45 130 45 92" fill="none" stroke="#2F4A5E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M45 160 C25 150 12 137 5 119" fill="none" stroke="#2F4A5E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M45 142 C66 132 79 119 86 101" fill="none" stroke="#2F4A5E" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- central flower -->
+  <path d="M45 83 C26 72 22 48 45 31 C68 48 64 72 45 83Z" fill="#B5522F"/>
+  <path d="M45 83 C26 94 22 118 45 135 C68 118 64 94 45 83Z" fill="#B5522F"/>
+  <path d="M45 83 C34 64 12 59 0 80 C12 101 34 102 45 83Z" fill="#B5522F"/>
+  <path d="M45 83 C56 64 78 59 90 80 C78 101 56 102 45 83Z" fill="#B5522F"/>
+  <circle cx="45" cy="83" r="13" fill="#C99447"/>
+  <circle cx="45" cy="83" r="5" fill="#2F4A5E"/>
+
+  <!-- upper petals -->
+  <path d="M45 31 C32 14 33 -5 45 -20 C57 -5 58 14 45 31Z" fill="#C99447"/>
+  <path d="M14 45 C-2 36 -8 20 0 7 C15 12 23 28 14 45Z" fill="#2F4A5E"/>
+  <path d="M76 45 C92 36 98 20 90 7 C75 12 67 28 76 45Z" fill="#2F4A5E"/>
+
+  <!-- dots -->
+  <circle cx="8" cy="58" r="5" fill="#B5522F"/>
+  <circle cx="82" cy="58" r="5" fill="#B5522F"/>
+  <circle cx="25" cy="22" r="5" fill="#C99447"/>
+  <circle cx="65" cy="22" r="5" fill="#C99447"/>
+
+  <!-- leaves -->
+  <path d="M43 148 C20 133 6 139 0 154 C17 165 33 165 43 148Z" fill="#2F4A5E"/>
+  <path d="M47 166 C70 151 84 157 90 172 C73 183 57 183 47 166Z" fill="#2F4A5E"/>
+</svg>

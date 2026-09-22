@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — OSRI</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/brand/osri-mark-square.svg">
+<link rel="icon" type="image/png" href="assets/brand/osri-icon-192.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#B5522F">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="cart.html">Cart</a><span>/</span><span>Checkout</span>
+    </nav>
+
+    <header class="page-head">
+      <span class="eyebrow">Checkout</span>
+      <h1>Complete your order</h1>
+      <p id="dispatchNote"></p>
+    </header>
+
+    <div class="checkout" id="checkoutRoot">
+
+      <div>
+        <!-- Step 1 -->
+        <section class="step">
+          <div class="step__head">
+            <span class="step__num">1</span>
+            <h2>Delivery details</h2>
+          </div>
+          <div class="contact-card">
+            <div class="form-row">
+              <label for="fName">Full name</label>
+              <input id="fName" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-row">
+              <label for="fPhone">Mobile number</label>
+              <input id="fPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" required>
+            </div>
+            <div class="form-row">
+              <label for="fAddress">Delivery address</label>
+              <textarea id="fAddress" autocomplete="street-address" placeholder="House / flat, street, area, city, state" required></textarea>
+            </div>
+            <div class="form-row">
+              <label for="fPincode">PIN code</label>
+              <input id="fPincode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="6" required>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="step">
+          <div class="step__head">
+            <span class="step__num">2</span>
+            <h2>Payment</h2>
+          </div>
+
+          <div class="pay-options">
+            <label class="pay-option">
+              <input type="radio" name="paymethod" value="upi" checked>
+              <span>
+                <strong>Pay now by UPI</strong>
+                <span>Scan the QR with GPay, PhonePe, Paytm or any UPI app</span>
+              </span>
+            </label>
+            <label class="pay-option" id="codOption">
+              <input type="radio" name="paymethod" value="cod">
+              <span>
+                <strong>Cash on Delivery</strong>
+                <span>Pay the courier when the parcel arrives</span>
+              </span>
+            </label>
+          </div>
+
+          <div id="upiBlock">
+            <div class="qr-panel" id="qrPanel" style="margin-top:18px"></div>
+
+            <div class="form-row" style="margin-top:18px">
+              <label for="fUtr">UPI reference / UTR number</label>
+              <input id="fUtr" type="text" placeholder="From your payment app after paying">
+            </div>
+
+            <div class="warn-note">
+              <div>Please pay first, then enter the reference number your UPI app shows.
+                   We dispatch only after the amount appears in our bank account —
+                   a screenshot alone cannot be accepted.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="step">
+          <div class="step__head">
+            <span class="step__num">3</span>
+            <h2>Send us the order</h2>
+          </div>
+          <p style="color:var(--ink-soft);margin:0 0 16px">
+            This opens WhatsApp with your order details filled in. Send the message
+            and we will confirm shortly.
+          </p>
+          <button class="btn btn--primary btn--block" id="sendBtn">Send order</button>
+          <div class="note" id="orderNote"></div>
+        </section>
+      </div>
+
+      <!-- Order summary -->
+      <aside class="summary">
+        <h2>Your order</h2>
+        <div id="orderLines"></div>
+        <div id="orderTotals" style="margin-top:14px"></div>
+        <a class="btn btn--light btn--block" href="cart.html" style="margin-top:16px">Edit cart</a>
+      </aside>
+
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/vendor/qrcode.min.js"></script>
+<script src="js/patterns.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/order.js"></script>
+</body>
+</html>

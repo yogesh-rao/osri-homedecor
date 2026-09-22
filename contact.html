@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — OSRI</title>
+<meta name="description" content="Get in touch with OSRI about orders, fabric, sizing or bulk enquiries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/brand/osri-mark-square.svg">
+<link rel="icon" type="image/png" href="assets/brand/osri-icon-192.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#B5522F">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Contact</span>
+    </nav>
+
+    <header class="page-head">
+      <span class="eyebrow">Contact</span>
+      <h1>Talk to us</h1>
+      <p>Questions about fabric, sizing, an existing order or a bulk enquiry —
+         all of it comes to the same place.</p>
+    </header>
+
+    <div class="contact-layout">
+
+      <div>
+        <div class="contact-card">
+          <h3>Details</h3>
+          <div class="contact-list" id="contactDetails"></div>
+          <div id="contactSocial" style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"></div>
+        </div>
+
+        <div class="contact-card" style="margin-top:20px">
+          <h3>Common questions</h3>
+          <div class="accordion" style="margin-top:0;border-top:0">
+            <details>
+              <summary>Where is my order?</summary>
+              <div class="acc-body">
+                Tracking is emailed when the parcel leaves us. If it has been more
+                than four working days since that email, send us the order number.
+              </div>
+            </details>
+            <details>
+              <summary>Can I return something?</summary>
+              <div class="acc-body">
+                Within seven days of delivery, unused and in its original packing.
+                Full terms are on the <a href="policies.html#returns">policies page</a>.
+              </div>
+            </details>
+            <details>
+              <summary>Do you take bulk or trade orders?</summary>
+              <div class="acc-body">
+                Yes — for hotels, homestays, gifting and resale. Tell us quantities
+                and rough timelines and we will send pricing.
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Send a message</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="cName">Your name</label>
+            <input id="cName" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="cPhone">Phone (optional)</label>
+            <input id="cPhone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label for="cTopic">What is this about?</label>
+            <select id="cTopic" name="topic">
+              <option>An order I placed</option>
+              <option>Product or fabric question</option>
+              <option>Returns or exchange</option>
+              <option>Bulk / trade enquiry</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" required></textarea>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Send message</button>
+          <div class="note" id="contactNote"></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/patterns.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

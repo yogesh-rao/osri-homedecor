@@ -1,0 +1,3 @@
+# local preview only
+__pycache__/
+*.pyc

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cart — OSRI</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/brand/osri-mark-square.svg">
+<link rel="icon" type="image/png" href="assets/brand/osri-icon-192.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#B5522F">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Cart</span>
+    </nav>
+
+    <header class="page-head">
+      <h1>Your cart</h1>
+      <p>Quantities update instantly. Nothing is charged — this build has no payment gateway.</p>
+    </header>
+
+    <div class="cart-layout" id="cartLayout">
+      <div class="cart-lines" id="cartLines"></div>
+
+      <aside class="summary" id="cartSummary">
+        <h2>Order summary</h2>
+        <div id="summaryBody"></div>
+
+        <form class="promo" id="promoForm">
+          <input id="promoInput" type="text" placeholder="Discount code" aria-label="Discount code">
+          <button class="btn btn--light btn--sm" type="submit">Apply</button>
+        </form>
+        <div class="note" id="promoNote"></div>
+
+        <button class="btn btn--primary btn--block" id="checkoutBtn" style="margin-top:16px">
+          Checkout &amp; pay by UPI
+        </button>
+        <button class="btn btn--dark btn--block" id="whatsappBtn" style="margin-top:10px">
+          Order on WhatsApp
+        </button>
+        <a class="btn btn--light btn--block" href="collection.html?c=all" style="margin-top:10px">
+          Continue shopping
+        </a>
+      </aside>
+    </div>
+
+    <section class="section">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow">Before you go</span>
+          <h2>Popular right now</h2>
+        </div>
+      </div>
+      <div class="product-grid" id="relatedGrid"></div>
+    </section>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/patterns.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

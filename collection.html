@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — OSRI</title>
+<meta name="description" content="Browse OSRI cotton bedsheets, bedcovers, cushions, table linen and bags.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/brand/osri-mark-square.svg">
+<link rel="icon" type="image/png" href="assets/brand/osri-icon-192.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#B5522F">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span id="crumbCurrent">Shop</span>
+    </nav>
+
+    <header class="page-head">
+      <h1 id="collTitle">Shop</h1>
+      <p id="collBlurb"></p>
+    </header>
+
+    <div class="toolbar">
+      <div class="chips" id="chips"></div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span class="result-count" id="resultCount"></span>
+        <input class="select" id="searchInput" type="search" placeholder="Search prints…" aria-label="Search products" style="min-width:180px">
+        <label class="visually-hidden" for="sortSelect">Sort by</label>
+        <select class="select" id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="discount">Biggest discount</option>
+          <option value="rating">Top rated</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="product-grid" id="collGrid"></div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/patterns.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/collection.js"></script>
+</body>
+</html>
