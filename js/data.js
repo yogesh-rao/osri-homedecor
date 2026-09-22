@@ -140,7 +140,7 @@ const RAW = [
   ['osri-214', 'Seafoam Buti King Bedsheet',     'bedsheets-king', 1199, 0, 'buti',  'teal',       'new', 1],
   ['osri-215', 'Terracotta Paisley King Bedsheet','bedsheets-king',1199, 0, 'bloom', 'terracotta', 'new', 1],
 
-  // Woven stripe king sets. NOT block print, so they carry their own copy.
+  // Printed stripe king sets. NOT block print, so they carry their own copy.
   // Price and 300 TC confirmed. TODO: fibre composition still unconfirmed —
   // see the note in DESC_BY_ID before claiming cotton or a mercerised finish.
   ['osri-221', 'Sand Stripe King Bedsheet',       'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
@@ -305,9 +305,9 @@ for (let n = 611; n <= 620; n++) {
 });
 
 /* ------------------------------------------------------------
-   WOVEN STRIPE KING SETS (osri-221..226).
+   PRINTED STRIPE KING SETS (osri-221..226).
 
-   Six colourways of the same 300 TC woven stripe, so the copy is built from
+   Six colourways of the same 300 TC printed stripe, so the copy is built from
    one template rather than six near-identical blocks that could drift apart.
    Only the colour phrase differs.
 
@@ -325,7 +325,7 @@ const STRIPE_COLOURS = {
   'osri-225': 'slate blue',
   'osri-226': 'pebble grey'
 };
-const STRIPE_MATERIAL = '300 TC woven stripe';   // add fibre once confirmed
+const STRIPE_MATERIAL = '300 TC printed stripe';  // add fibre once confirmed
 
 /* The loop that fills in their copy lives further down, after DESC_BY_ID,
    FEATURES_BY_ID, SIZE_BY_ID and MATERIAL_BY_ID are all declared — `const`
@@ -407,7 +407,7 @@ Object.keys(STRIPE_COLOURS).forEach(id => {
   SIZE_BY_ID[id] = '108 x 100 in (king), with 2 pillow covers';
   MATERIAL_BY_ID[id] = STRIPE_MATERIAL;
   DESC_BY_ID[id] =
-    'A 300 thread count woven stripe in ' + STRIPE_COLOURS[id] + ' on a cream ' +
+    'A 300 thread count printed stripe in ' + STRIPE_COLOURS[id] + ' on a cream ' +
     'ground, with two matching pillow covers. Generous king proportions so it ' +
     'sits flat with an even drop on both sides, and a close, smooth weave that ' +
     'presses crisp and softens with every wash.';
@@ -415,7 +415,7 @@ Object.keys(STRIPE_COLOURS).forEach(id => {
     '300 thread count',
     'King size, 108 x 100 in',
     'Comes with two matching pillow covers',
-    'Woven stripe, not a printed one'
+    'Crisp printed stripe on a close, smooth weave'
   ];
 });
 
