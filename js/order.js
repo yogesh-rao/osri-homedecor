@@ -6,6 +6,11 @@
 
 const SHIPPING_FLAT = STORE.shippingFlat;
 
+/* Set once the order has been handed to WhatsApp. Emptying the cart then
+   fires cart:change, and without this the page would reload and replace the
+   confirmation with the "your cart is empty" state. */
+let orderPlaced = false;
+
 function totals() {
   const subtotal = Cart.subtotal();
   const promo = readPromo();
@@ -130,11 +135,47 @@ function validate() {
   };
 }
 
+/** Once the order has gone, the checkout must stop looking like a form that
+    still wants paying. Replace the whole thing with a confirmation. */
+function showConfirmation(ref, amount, text, method) {
+  const wa = whatsappHref(text);
+  const resend = wa
+    ? `<a class="btn btn--light" href="${wa}" target="_blank" rel="noopener">Send the message again</a>`
+    : '';
+
+  qs('#checkoutRoot').innerHTML = `
+    <div class="coming-soon" style="grid-column:1/-1">
+      <span class="eyebrow">Order sent</span>
+      <h3>Thank you — we have your order</h3>
+      <p>
+        Your reference is <span class="order-ref">${esc(ref)}</span> for
+        <strong>${money(amount)}</strong>.
+        ${method === 'upi'
+          ? 'We will confirm on WhatsApp as soon as the payment shows in our account.'
+          : 'We will confirm on WhatsApp and send it out for cash on delivery.'}
+      </p>
+      <p style="font-size:.85rem">
+        If the WhatsApp message did not go through, send it again below —
+        we only see your order once that message arrives.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px">
+        ${resend}
+        <a class="btn btn--primary" href="collection.html?c=all">Continue shopping</a>
+      </div>
+    </div>`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function sendOrder() {
   const details = validate();
   if (!details) return;
 
+  // Capture everything before the cart is emptied — the confirmation and the
+  // resend link must still work once the cart is gone.
   const text = orderSummaryText(details);
+  const ref = orderRef();
+  const amount = totals().total;
+  const method = selectedMethod();
   const wa = whatsappHref(text);
 
   if (wa) {
@@ -142,13 +183,15 @@ function sendOrder() {
   } else {
     // No WhatsApp number configured — fall back to email.
     location.href = 'mailto:' + BUSINESS.email +
-      '?subject=' + encodeURIComponent('New order ' + orderRef()) +
+      '?subject=' + encodeURIComponent('New order ' + ref) +
       '&body=' + encodeURIComponent(text);
   }
 
-  qs('#orderNote').className = 'note note--ok';
-  qs('#orderNote').textContent =
-    'Order sent. We will confirm on WhatsApp once the payment shows in our account.';
+  // Stop onCartChange from reloading the page out from under the confirmation.
+  orderPlaced = true;
+  Cart.clear();
+  clearOrderRef();          // the next order gets its own reference
+  showConfirmation(ref, amount, text, method);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -180,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Keep the QR and totals correct if the cart changes in another tab. */
 function onCartChange() {
+  if (orderPlaced) return;              // confirmation is showing — leave it alone
   if (!Cart.count()) { location.reload(); return; }
   renderSummary();
   renderQR();
