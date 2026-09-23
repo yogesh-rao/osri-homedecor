@@ -143,20 +143,20 @@ const RAW = [
   // Printed stripe king sets. NOT block print, so they carry their own copy.
   // Price and 300 TC confirmed. TODO: fibre composition still unconfirmed —
   // see the note in DESC_BY_ID before claiming cotton or a mercerised finish.
-  ['osri-221', 'Sand Stripe King Bedsheet',       'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
-  ['osri-222', 'Coral Stripe King Bedsheet',      'bedsheets-king', 1899, 0, 'stripe', 'terracotta', 'premium', 1],
-  ['osri-223', 'Almond Stripe King Bedsheet',     'bedsheets-king', 1899, 0, 'stripe', 'sand',       'premium', 1],
-  ['osri-224', 'Sage Stripe King Bedsheet',       'bedsheets-king', 1899, 0, 'stripe', 'olive',      'premium', 1],
-  ['osri-225', 'Slate Blue Stripe King Bedsheet', 'bedsheets-king', 1899, 0, 'stripe', 'indigo',     'premium', 1],
-  ['osri-226', 'Pebble Stripe King Bedsheet',     'bedsheets-king', 1899, 0, 'stripe', 'espresso',   'premium', 1],
+  ['osri-221', 'Sand Stripe King Bedsheet',       'bedsheets-king', 1999, 0, 'stripe', 'sand',       'premium', 1],
+  ['osri-222', 'Coral Stripe King Bedsheet',      'bedsheets-king', 1999, 0, 'stripe', 'terracotta', 'premium', 1],
+  ['osri-223', 'Almond Stripe King Bedsheet',     'bedsheets-king', 1999, 0, 'stripe', 'sand',       'premium', 1],
+  ['osri-224', 'Sage Stripe King Bedsheet',       'bedsheets-king', 1999, 0, 'stripe', 'olive',      'premium', 1],
+  ['osri-225', 'Slate Blue Stripe King Bedsheet', 'bedsheets-king', 1999, 0, 'stripe', 'indigo',     'premium', 1],
+  ['osri-226', 'Pebble Stripe King Bedsheet',     'bedsheets-king', 1999, 0, 'stripe', 'espresso',   'premium', 1],
 
   // --- Fitted ---
-  ['osri-301', 'Calico Fitted Bedsheet',        'bedsheets-fitted', 1799, 0, 'stripe',  'sand',       'new',        10],
+  ['osri-301', 'Calico Fitted Bedsheet',        'bedsheets-fitted', 1899, 0, 'stripe',  'sand',       'new',        10],
 
   // --- Cushions & table linen ---
   // Block-print cushion covers sold as a set of five.
-  ['osri-511', 'Rose Bouquet Cushion Covers, Set of 5', 'cushions-linen', 799, 0, 'bloom', 'rose',   'new', 1],
-  ['osri-512', 'Bird & Vine Cushion Covers, Set of 5',  'cushions-linen', 799, 0, 'vine',  'olive',  'new', 1],
+  ['osri-511', 'Rose Bouquet Cushion Covers, Set of 5', 'cushions-linen', 899, 0, 'bloom', 'rose',   'new', 1],
+  ['osri-512', 'Bird & Vine Cushion Covers, Set of 5',  'cushions-linen', 899, 0, 'vine',  'olive',  'new', 1],
 
   // --- Bags & accessories ---
   ['osri-651', 'Forest Bloom Laptop Bag',       'bags',              549, 0, 'bloom',   'olive',      'new',         1],
@@ -165,30 +165,30 @@ const RAW = [
   // --- Tote bags 16 x 16 ---
   // NOTE: the file numbers were design indexes, not sizes, so each print is
   // its own product. Stock set to 1 per design — correct if you hold more.
-  ['osri-631', 'Rose Vine Tote 16 x 16',        'bags',              549, 0, 'bloom',   'rose',       'new',         1],
-  ['osri-632', 'Scarlet Patchwork Tote 16 x 16','bags',              549, 0, 'jaali',   'terracotta', 'new',         1],
-  ['osri-633', 'Teal Buti Tote 16 x 16',        'bags',              549, 0, 'buti',    'teal',       'new',         1],
-  ['osri-634', 'Coral Sunflower Tote 16 x 16',  'bags',              549, 0, 'bloom',   'terracotta', 'new',         1],
-  ['osri-635', 'Azure Bird Tote 16 x 16',       'bags',              549, 0, 'vine',    'indigo',     'new',         1],
+  ['osri-631', 'Rose Vine Tote 16 x 16',        'bags',              699, 0, 'bloom',   'rose',       'new',         1],
+  ['osri-632', 'Scarlet Patchwork Tote 16 x 16','bags',              699, 0, 'jaali',   'terracotta', 'new',         1],
+  ['osri-633', 'Teal Buti Tote 16 x 16',        'bags',              699, 0, 'buti',    'teal',       'new',         1],
+  ['osri-634', 'Coral Sunflower Tote 16 x 16',  'bags',              699, 0, 'bloom',   'terracotta', 'new',         1],
+  ['osri-635', 'Azure Bird Tote 16 x 16',       'bags',              699, 0, 'vine',    'indigo',     'new',         1],
 
   // --- Tote bags 18 x 18 ---
-  ['osri-641', 'Emerald Paisley Tote 18 x 18',  'bags',              599, 0, 'vine',    'olive',      'new',         1],
-  ['osri-642', 'Golden Elephant Tote 18 x 18',  'bags',              599, 0, 'buti',    'saffron',    'new',         1],
-  ['osri-643', 'Rose Buti Tote 18 x 18',        'bags',              599, 0, 'buti',    'rose',       'new',         1],
+  ['osri-641', 'Emerald Paisley Tote 18 x 18',  'bags',              749, 0, 'vine',    'olive',      'new',         1],
+  ['osri-642', 'Golden Elephant Tote 18 x 18',  'bags',              749, 0, 'buti',    'saffron',    'new',         1],
+  ['osri-643', 'Rose Buti Tote 18 x 18',        'bags',              749, 0, 'buti',    'rose',       'new',         1],
 
   // --- Toiletry sets: ten block-print designs, each a set of 3 pouches ---
   // NOTE: stock is set to 1 per design as a safe assumption (the tracker showed
   // 10 toiletry sets in total). Correct these if you hold more of any design.
-  ['osri-611', 'Indigo Bloom Toiletry Set',     'bags',              449, 0, 'bloom',   'indigo',     'new',         1],
-  ['osri-612', 'Amber Medallion Toiletry Set',  'bags',              449, 0, 'jaali',   'terracotta', 'new',         1],
-  ['osri-613', 'Mustard Marigold Toiletry Set', 'bags',              449, 0, 'buti',    'saffron',    'new',         1],
-  ['osri-614', 'Rose Garden Toiletry Set',      'bags',              449, 0, 'bloom',   'rose',       'new',         1],
-  ['osri-615', 'Scarlet Poppy Toiletry Set',    'bags',              449, 0, 'bloom',   'terracotta', 'new',         1],
-  ['osri-616', 'Forest Fern Toiletry Set',      'bags',              449, 0, 'vine',    'teal',       'new',         1],
-  ['osri-617', 'Olive Marigold Toiletry Set',   'bags',              449, 0, 'buti',    'olive',      'new',         1],
-  ['osri-618', 'Saffron Stripe Toiletry Set',   'bags',              449, 0, 'stripe',  'saffron',    'new',         1],
-  ['osri-619', 'Blush Rose Toiletry Set',       'bags',              449, 0, 'bloom',   'rose',       'new',         1],
-  ['osri-620', 'Midnight Vine Toiletry Set',    'bags',              449, 0, 'vine',    'espresso',   'new',         1]
+  ['osri-611', 'Indigo Bloom Toiletry Set',     'bags',              599, 0, 'bloom',   'indigo',     'new',         1],
+  ['osri-612', 'Amber Medallion Toiletry Set',  'bags',              599, 0, 'jaali',   'terracotta', 'new',         1],
+  ['osri-613', 'Mustard Marigold Toiletry Set', 'bags',              599, 0, 'buti',    'saffron',    'new',         1],
+  ['osri-614', 'Rose Garden Toiletry Set',      'bags',              599, 0, 'bloom',   'rose',       'new',         1],
+  ['osri-615', 'Scarlet Poppy Toiletry Set',    'bags',              599, 0, 'bloom',   'terracotta', 'new',         1],
+  ['osri-616', 'Forest Fern Toiletry Set',      'bags',              599, 0, 'vine',    'teal',       'new',         1],
+  ['osri-617', 'Olive Marigold Toiletry Set',   'bags',              599, 0, 'buti',    'olive',      'new',         1],
+  ['osri-618', 'Saffron Stripe Toiletry Set',   'bags',              599, 0, 'stripe',  'saffron',    'new',         1],
+  ['osri-619', 'Blush Rose Toiletry Set',       'bags',              599, 0, 'bloom',   'rose',       'new',         1],
+  ['osri-620', 'Midnight Vine Toiletry Set',    'bags',              599, 0, 'vine',    'espresso',   'new',         1]
 ];
 
 /* ------------------------------------------------------------
