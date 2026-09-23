@@ -901,6 +901,10 @@ h3 { font-size: 1.22rem; }
 }
 
 @media (max-width: 900px) {
+  /* Hide the <nav> wrapper, not just the <ul> inside it. The header is a
+     three-column grid; leaving an empty <nav> in place made four children,
+     which pushed the search/account/cart group onto a second row. */
+  .main-nav { display: none; }
   .nav { display: none; }
   .hamburger { display: grid; }
   .header-bar { grid-template-columns: auto 1fr auto; }

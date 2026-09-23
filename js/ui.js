@@ -289,7 +289,7 @@ function headerHTML() {
           <img class="brand__logo" src="assets/brand/osri-logo-compact.png"
                alt="${esc(STORE.name)}" width="292" height="140">
         </a>
-        <nav aria-label="Main">
+        <nav class="main-nav" aria-label="Main">
           <ul class="nav" style="list-style:none;margin:0;padding:0">${nav}</ul>
         </nav>
         <div class="header-actions">
