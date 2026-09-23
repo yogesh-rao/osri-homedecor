@@ -294,7 +294,7 @@ function headerHTML() {
         </nav>
         <div class="header-actions">
           <a class="icon-btn" href="collection.html?c=all" aria-label="Search products">${ICONS.search}</a>
-          <button class="icon-btn hide-sm" aria-label="Account" onclick="toast('Accounts are not set up yet')">${ICONS.user}</button>
+          <button class="icon-btn" aria-label="Account" onclick="toast('Accounts are not set up yet')">${ICONS.user}</button>
           <button class="icon-btn js-cart-open" aria-label="Open cart">
             ${ICONS.cart}<span class="cart-count" hidden>0</span>
           </button>

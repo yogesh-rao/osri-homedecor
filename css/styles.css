@@ -328,10 +328,29 @@ h3 { font-size: 1.22rem; }
   color: var(--brand-dark);
   margin-bottom: 14px;
 }
-.hero p.lede {
-  font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; margin: 16px 0 26px;
+
+/* Image-led hero: the photograph carries it, with one button. The scrim is a
+   soft dark gradient at the base only, enough to keep the button legible
+   without dulling the picture the way the full text scrim did. */
+.hero--image {
+  align-items: flex-end;
+  justify-content: center;
+  min-height: clamp(380px, 46vw, 560px);
 }
-.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero--image .hero__scrim {
+  background: linear-gradient(180deg,
+    rgba(42, 33, 28, 0) 55%, rgba(42, 33, 28, .38) 100%);
+}
+.hero--image .hero__inner {
+  max-width: none;
+  padding: 0 24px clamp(26px, 4vw, 46px);
+  text-align: center;
+}
+.hero__shop {
+  padding: 14px 40px;
+  font-size: .95rem;
+  box-shadow: 0 6px 20px rgba(42, 33, 28, .25);
+}
 
 .trust-strip {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
@@ -926,18 +945,14 @@ h3 { font-size: 1.22rem; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 26px; }
 
-  /* The headline was clamping to 40px on a 390px screen, which left the
-     hero crowded once the lede and two buttons were under it. */
-  .hero { border-radius: 16px; min-height: 0; }
-  .hero__inner { padding: 26px 20px 30px; }
+  /* A portrait-ish crop shows more of the photograph on a phone than a
+     letterbox would. */
+  .hero { border-radius: 16px; }
+  .hero--image { min-height: 0; aspect-ratio: 3 / 4; max-height: 74vh; }
+  .hero--image .hero__inner { padding-bottom: 24px; }
+  .hero__shop { padding: 13px 34px; }
   h1 { font-size: 1.95rem; }
   h2 { font-size: 1.6rem; }
-  .hero p.lede { font-size: .95rem; margin: 12px 0 20px; }
-  .hero__cta { gap: 10px; }
-  .hero__cta .btn { flex: 1 1 100%; }
-  .hero__scrim {
-    background: linear-gradient(180deg, rgba(247, 239, 227, .95) 40%, rgba(247, 239, 227, .62) 100%);
-  }
 
   .section { padding-top: 38px; }
   .section:last-of-type { padding-bottom: 38px; }
@@ -945,9 +960,14 @@ h3 { font-size: 1.22rem; }
 
   .announce { font-size: .72rem; letter-spacing: .04em; padding: 8px 12px; }
   .announce__more { display: none; }        /* one message, not three lines */
-  .hide-sm { display: none; }               /* demo-only account button */
-  .icon-btn { width: 44px; height: 44px; }  /* comfortable tap target */
-  .brand__logo { height: 30px; }
+
+  /* All five controls stay on one row: menu, logo, search, account, cart.
+     The gaps tighten rather than anything being dropped. */
+  .header-bar { gap: 6px; }
+  .header-actions { gap: 0; }
+  .icon-btn { width: 40px; height: 40px; }
+  .icon-btn svg { width: 20px; height: 20px; }
+  .brand__logo { height: 28px; }
 
   .trust-strip div { padding: 12px 14px; }
   .trust-strip strong { font-size: .82rem; }
