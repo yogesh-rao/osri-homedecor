@@ -896,19 +896,83 @@ h3 { font-size: 1.22rem; }
   .trust-strip { grid-template-columns: 1fr 1fr; }
 }
 
+/* ---------- floating WhatsApp button ---------- */
+
+.wa-fab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 70;
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: #25D366; color: #fff;
+  box-shadow: 0 6px 18px rgba(42, 33, 28, .28);
+  transition: transform .16s ease;
+}
+.wa-fab:hover { transform: scale(1.06); }
+.wa-fab svg { width: 30px; height: 30px; }
+
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }
-  .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .product-grid, .product-grid--5 { grid-template-columns: repeat(2, 1fr); gap: 18px 14px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+
+  /* Two tiles read better than three: category names like "Cushions &
+     Table Linen" wrapped to three lines in a 110px-wide tile. */
+  .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 14px; }
+  .cat-card h3 { font-size: .95rem; }
+  .cat-card span { font-size: .72rem; }
+
+  .product-grid, .product-grid--5 { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+  .card__title { font-size: .86rem; }
+  .price__now { font-size: .95rem; }
   .card__add { opacity: 1; transform: none; }
-  .hero { border-radius: 16px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+
+  /* The headline was clamping to 40px on a 390px screen, which left the
+     hero crowded once the lede and two buttons were under it. */
+  .hero { border-radius: 16px; min-height: 0; }
+  .hero__inner { padding: 26px 20px 30px; }
+  h1 { font-size: 1.95rem; }
+  h2 { font-size: 1.6rem; }
+  .hero p.lede { font-size: .95rem; margin: 12px 0 20px; }
+  .hero__cta { gap: 10px; }
+  .hero__cta .btn { flex: 1 1 100%; }
   .hero__scrim {
-    background: linear-gradient(180deg, rgba(247, 239, 227, .95) 40%, rgba(247, 239, 227, .55) 100%);
+    background: linear-gradient(180deg, rgba(247, 239, 227, .95) 40%, rgba(247, 239, 227, .62) 100%);
   }
+
+  .section { padding-top: 38px; }
+  .section:last-of-type { padding-bottom: 38px; }
+  .section__head { margin-bottom: 18px; }
+
+  .announce { font-size: .72rem; letter-spacing: .04em; padding: 8px 12px; }
+  .announce__more { display: none; }        /* one message, not three lines */
+  .hide-sm { display: none; }               /* demo-only account button */
+  .icon-btn { width: 44px; height: 44px; }  /* comfortable tap target */
+  .brand__logo { height: 30px; }
+
+  .trust-strip div { padding: 12px 14px; }
+  .trust-strip strong { font-size: .82rem; }
+  .trust-strip span { font-size: .76rem; }
+
+  .story__body, .story--flip .story__body { padding: 24px 20px 28px; }
+  .value-grid { grid-template-columns: 1fr; gap: 12px; }
+  .value { padding: 18px; }
+
   .cart-line { grid-template-columns: 84px 1fr; }
   .cart-line__img { width: 84px; }
   .cart-line__right { grid-column: 2; text-align: left; }
+
+  .newsletter { padding: 28px 20px; }
+  .newsletter form { flex-direction: column; }
+  .newsletter .btn { width: 100%; }
+
+  /* Keep the button clear of the floating WhatsApp bubble. */
+  .toast { bottom: 82px; }
+}
+
+@media (max-width: 400px) {
+  .cat-grid { gap: 14px 10px; }
+  .product-grid, .product-grid--5 { gap: 18px 10px; }
+  .wa-fab { width: 50px; height: 50px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
