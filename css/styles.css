@@ -365,6 +365,16 @@ h3 { font-size: 1.22rem; }
   padding: 16px 18px;
   font-size: .82rem;
 }
+
+/* Footer variant: the dark ground needs light text and quieter dividers. */
+.trust-strip--footer {
+  background: rgba(255, 255, 255, .12);
+  border: 0;
+  margin-bottom: 38px;
+}
+.trust-strip--footer div { background: var(--ink); color: #C9D2CE; }
+.trust-strip--footer strong { color: #fff; }
+.trust-strip--footer span { color: #97A5A0; }
 .trust-strip strong { display: block; font-size: .88rem; margin-bottom: 2px; }
 .trust-strip span { color: var(--muted); }
 

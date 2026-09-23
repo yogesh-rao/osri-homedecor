@@ -347,6 +347,15 @@ function footerHTML() {
   return `
     <footer class="site-footer">
       <div class="wrap">
+        <!-- Moved out of the homepage hero area so products come first. In the
+             footer it also reaches the product, cart and checkout pages, where
+             reassurance about shipping and returns matters more. -->
+        <div class="trust-strip trust-strip--footer">
+          <div><strong>Free shipping over ${money(STORE.freeShipOver)}</strong><span>Delivered across India</span></div>
+          <div><strong>7-day returns</strong><span>Unused, in original packing</span></div>
+          <div><strong>Hand block printed</strong><span>Traditional Rajasthani prints</span></div>
+          <div><strong>Pure cotton</strong><span>No polyester blends</span></div>
+        </div>
         <div class="footer-grid">
           <div class="footer-about">
             <a class="brand" href="index.html" aria-label="${esc(STORE.name)} — home">
